@@ -77,55 +77,8 @@
                         </div>
             `;
         })
-        .nodeUpdate(function (d, i, arr) {
-            d3.select(this)
-            .select('.node-rect')
-            .attr('stroke', (d) =>
-                d.data._highlighted || d.data._upToTheRootHighlighted
-                ? '#14760D'
-                : 'none'
-            )
-            .attr(
-                'stroke-width',
-                d.data._highlighted || d.data._upToTheRootHighlighted ? 40 : 1
-            );
-
-            const pieChartWrapperNode = d3
-            .select(this)
-            .select('.pie-chart-wrapper')
-            .node();
-            const val = (d.data.name.length * 5) % 100; // Dummy calc
-            // General pie chart invokation code
-            new PieChart()
-            .data([
-                { key: 'plan', color: '#6EC2EA', value: val },
-                { key: 'exec', color: '#0D5AAF', value: 100 - val },
-            ])
-            .container(pieChartWrapperNode)
-            .svgHeight(200)
-            .svgWidth(320)
-            .marginTop(40)
-            .image(d.data.imageUrl)
-            .backCircleColor('#1F72A7')
-            .defaultFont('Inter')
-            .render();
-        })
         // Render the chart
         .render();
-
-        /*
-        const url = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QMaAyMA1SdmlAAAAVRJREFUeNrt26FOw2AUhuFTElzrETNLMNPtJVRVVFbtlnYXKGQFqldANo3EoLDUITazzCxBTNBk53lv4M+XJ/ndKZ52L9uft9eP+Oeqbtgs8O7+cbWO36/PiIgmwd4ojsdIU9n2l7XzNBYZNj9Eos6oTRbcdMAZAwxYgAVYgAVYgAUYsAALsAALsAALMGABFmABFmABFmABBizAAqwFgZ/fv+slHl7q3aobNpn2proujIgo276ep/HgixZgARZgARZgAQYswAIswAIswAIswIAFWIAFWIAFWIABC7AAC7AAC7D+AHZdeN97XRf6ogVYgAVYgAVYgAELsAALsAALsAADFmABFmABFmABFmDAAizAAizAAqxrYNeF973XdaEvWoAFWIAFWIAFGLAAC7AAC7AACzBgARZgARZgARZgAQYswAIswAKsW0p1m1S2/WXtPI1Fhs0nxU1Jj2yxm2sAAAAASUVORK5CYII=`;
-        const replaced = url.replace(/(\r\n|\n|\r)/gm);
-        d3.select('.svg-chart-container')
-        .style(
-            'background',
-            'radial-gradient(circle at center, #04192B 0, #000B0E 100%) url("https://raw.githubusercontent.com/bumbeishvili/coronavirus.davidb.dev/master/glow.png")'
-        )
-        .style(
-            'background-image',
-            `url(${replaced}), radial-gradient(circle at center, #04192B 0, #000B0E 100%)`
-        );
-        */
     });
     //
     // For downloading the chart as a pdf
