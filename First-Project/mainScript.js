@@ -75,22 +75,6 @@
                             }
 
                         </div>
-
-                        <div style="position:absolute;left:-5px;bottom:10px;">
-                            <div style="font-size:10px;color:#2CAAE5;margin-left:20px;margin-top:32px"> Progress </div>
-                            <div style="color:#2CAAE5;margin-left:20px;margin-top:3px;font-size:10px;"> 
-                            <svg width=150 height=30> ${d.data.progress
-                                .map((h, i) => {
-                                return `<rect  width=10 x="${
-                                    i * 12
-                                }" height=${h}  y=${
-                                    30 - h
-                                } fill="#B41425"/>`;
-                                })
-                                .join('')}  </svg>
-                            </div>
-                        </div>
-                        </div>
             `;
         })
         .nodeUpdate(function (d, i, arr) {
