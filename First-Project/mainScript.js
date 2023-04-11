@@ -16,10 +16,10 @@
         .container('.chart-container')
         .svgHeight(window.innerHeight - 10)
         .data(dataFlattened)
-        .nodeHeight((d) => 170)
+        .nodeHeight((d) => 160)
         .nodeWidth((d) => {
         if (d.depth == 0) return 500;
-        return 330;
+        return 280;
         })
         .childrenMargin((d) => 90)
         .compactMarginBetween((d) => 65)
@@ -27,19 +27,19 @@
         .neightbourMargin((a, b) => 50)
         .siblingsMargin((d) => 100)
         .buttonContent(({ node, state }) => {
-        return `<div style="color:#2CAAE5;border-radius:5px;padding:3px;font-size:10px;margin:auto auto;background-color:#040910;border: 1px solid #2CAAE5"> <span style="font-size:9px">${
+        return `<div style="color:#2CAAE5;border-radius:5px;padding:3px;font-size:10px;margin:auto auto;background-color:#8cf100;border: 1px solid #2CAAE5"> <span style="font-size:9px">${
             node.children
             ? `<i class="fas fa-angle-up"></i>`
             : `<i class="fas fa-angle-down"></i>`
-        }</span> ${node.data._directSubordinates}  </div>`;
+        }</span> ${node.data._directSubordinates} </div>`;
         })
         .linkUpdate(function (d, i, arr) {
         d3.select(this)
             .attr('stroke', (d) =>
-            d.data._upToTheRootHighlighted ? '#14760D' : '#2CAAE5'
+                d.data._upToTheRootHighlighted ? 'white' : 'white'
             )
             .attr('stroke-width', (d) =>
-            d.data._upToTheRootHighlighted ? 15 : 1
+                d.data._upToTheRootHighlighted ? 15 : 1
             );
 
         if (d.data._upToTheRootHighlighted) {
@@ -47,36 +47,40 @@
         }
         })
         .nodeContent(function (d, i, arr, state) {
-        const svgStr = `<svg width=150 height=75  style="background-color:none"> <path d="M 0,15 L15,0 L135,0 L150,15 L150,60 L135,75 L15,75 L0,60" fill="#2599DD" stroke="#2599DD"/> </svg>`;
-        return `
-                        <div style="font-family: 'Inter'; background-color:#040910;sans-serif; position:absolute;margin-top:-1px; margin-left:-1px;width:${
-                        d.width
-                        }px;height:${d.height}px;border-radius:0px;border: 2px solid #2CAAE5">
-                        
-                        <div class="pie-chart-wrapper" style="margin-left:-10px;margin-top:5px;width:320px;height:300px"></div>
-                        
-                        <div style="color:#2CAAE5;position:absolute;right:15px;top:-20px;">
-                            <div style="font-size:15px;color:#2CAAE5;margin-top:32px"> ${
+            // const svgStr = `<svg width=150 height=75  style="background-color:none"> <path d="M 0,15 L15,0 L135,0 L150,15 L150,60 L135,75 L15,75 L0,60" fill="#2599DD" stroke="#2599DD"/> </svg>`;
+            // <div style="width:${d.width}px; height:${d.height}px;" class="node-main-div">
+            const imageSrc = 'http://127.0.0.1:5500/First-Project/dev.png'; // replace with your image source URL
+            return `
+                <div style="width:300px; height:170px;" class="node-main-div">
+                    <img src="${imageSrc}" class="node-profile-image" alt="Profile Image">
+                    <div class="pie-chart-wrapper"></div>
+                    <div class="node-main-userInfo">
+
+                        <div class="node-user-name"> ${
                             d.data.name
-                            } </div>
-                            <div style="font-size:10px;"> ${
-                            d.data.positionName || ''
-                            } </div>
-                            <div style="font-size:10px;"> ${
-                            d.data.id || ''
-                            } </div>
-                            ${
+                        } </div>
+                        <div class="node-user-positionName"> ${
+                            d.data.positionName || '---'
+                        } </div>
+                        <div class="node-user-prodoscore"> Prodoscore: ${
+                            d.data.id || '---'
+                        } </div>
+
+                        
+                        ${
                             d.depth == 0
-                                ? `                              <br/>
+                                ? `                              
+                            <br/>
                             <div style="max-width:200px;font-size:10px;">
-                            A corporate history of Ian is a chronological account of a business or other co-operative organization he founded.  <br><br>Usually it is produced in written format but it can also be done in audio or audiovisually  
+                            Hello World! Prodoscore Org Hiraerchy Chart. 
                             </div>`
                                 : ''
-                            }
-
-                        </div>
+                        }
+                    </div>
+                </div>
             `;
         })
+        
         // Render the chart
         .render();
     });

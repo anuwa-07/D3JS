@@ -1,5 +1,5 @@
 body {
-    background-color: #000c0e;
+    background-color: #060e12
 }
 
 .btn {
@@ -53,7 +53,7 @@ body {
 
   .action-buttons {
     position: absolute;
-    bottom: 10px;
+    top: 70px;
     right: 35px;
   }
 
@@ -66,3 +66,82 @@ body {
     bottom: 0;
     background: radial-gradient(circle at center, #04192b 0, #000b0e 100%);
   }
+
+
+/* New CSS */
+
+.node-foreign-object-div {
+  background-color: #022f45;
+  border-radius: 2px solid #021228;
+  color: #000b0e;
+}
+
+.node-button-g {
+  background-color: #8cf100;
+}
+
+.main-dev-node {
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    margin-top: -1px;
+    margin-left: -1px;
+    border-radius: 0px;
+    border: 2px solid #2CAAE5;
+}
+
+.node-profile-image {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.pie-chart-wrapper {
+  margin-left: -10px;
+  margin-top: 5px;
+  width: 320px;
+  height: 300px;
+}
+
+
+/* This is for the New UserInfo showing box */
+.node-main-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.node-main-userInfo {
+  color: #2d3234;
+  position: absolute;
+  /* right: 50%;
+  top: 50%;
+  transform: translateY(-50%); */
+}
+
+.node-main-userInfo .node-user-name {
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #fcfcfc;
+  margin-top: 32px;
+}
+
+.node-main-userInfo .node-user-positionName {
+  font-size: 12px;
+  color: white;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+}
+
+.node-main-userInfo .node-user-prodoscore {
+  font-size: 12px;
+  color: rgb(254, 254, 254);
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
