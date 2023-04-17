@@ -1,10 +1,6 @@
 
-// 
-// module.onloaded = function() {
-    // var index = 0;
-    // var compact = 0;
-    // var actNdCent = 0;
     var chart;
+    var dataFlattened_;
     d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv').then((dataFlattened) => {
         dataFlattened.forEach((d) => {
             const val = Math.round(d.name.length / 2);
@@ -12,6 +8,7 @@
         });
         //
         // Make the new chart
+        dataFlattened_ = dataFlattened;
         chart = new d3.OrgChart()
         .container('.chart-container')
         .svgHeight(window.innerHeight - 10)
@@ -107,4 +104,31 @@
           },
         });
     }
-// }
+    //
+    // For employee search functionality
+    function searchEmployee() {
+        /*
+            This is how we need to call the search function
+            //
+            01. Search the Employee by name
+                - Keep the Employees Name and the Related IDs in a Dictionary.
+                - Search the Dictionary for the Employee Name.
+            //
+            02. When click on Employee Dom Element. 
+                - Get the Employee ID from the Dictionary.
+            //
+            03. Then by using the Employee ID, Call the Mark() Function.
+        */
+        console.log("------------ calling on Search Employee --------------");
+        const searchQuery = 'beate vileid';
+        //
+        // Filter the data based on the search query
+        const filteredData = dataFlattened_.filter((d) => {
+            console.log(d.name.toLowerCase());
+            console.log(d.name.toLowerCase().includes(searchQuery));
+            return d.name.toLowerCase().includes(searchQuery)            
+        });
+        //
+        // Update the chart with filtered data
+        chart.updateData(filteredData);
+    }
