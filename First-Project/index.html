@@ -7,26 +7,26 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-org-chart@2.6.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-flextree@2.1.2/build/d3-flextree.js"></script>
-
-    <div class="chart-container" style="height: 1200px"></div>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
+
+    <!-- For Local Libs -->
+    <!-- <script src="../LibFiles/d3js-7.js"></script>
+    <script src="../LibFiles/d3-org-chart@2.6.0.js"></script>
+    <script src="../LibFiles/d3-flextree.js"></script>
+    <link rel="stylesheet" href="../LibFiles/fornt-awesome-all.min.css"> -->
+    <!--  -->
+
+
     <script src="./mainScript.js"></script>
-    <!-- <script src="./pieChart.js"></script> -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
-
+    <link rel="stylesheet" href="style.css">   
     <script>
       var index = 0;
       var compact = 0;
       var actNdCent = 0;
     </script>
-
+    <!--  -->
+    <div class="chart-container" style="height: 1200px"></div>
     <div class="action-buttons">
     <!-- Button set start Here -->
         <button onclick='chart.setExpanded("O-6164").render()' class="btn btn-action-button waves-effect waves-light">
@@ -125,15 +125,5 @@
         <br />
     <!-- Button set end Here -->
     </div>
-
-    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
-    <script>
-      kofiWidgetOverlay.draw('bumbeishvili', {
-        type: 'floating-chat',
-        'floating-chat.donateButton.text': 'Tip Us',
-        'floating-chat.donateButton.background-color': '#00b9fe',
-        'floating-chat.donateButton.text-color': '#fff',
-      });
-    </script>
   </body>
 </html>
