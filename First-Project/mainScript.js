@@ -1,5 +1,6 @@
 // Add the Test data
 const test_data = [
+    //
     {
         "name": "Organization",
         "area": "Corporate",
@@ -266,7 +267,7 @@ const test_data = [
 var chart;
 var dataFlattened_;
 d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv').then((dataFlattened) => {
-    // dataFlattened = test_data;
+    dataFlattened = test_data;
     // 
     dataFlattened.forEach((d) => {
         const val = Math.round(d.name.length / 2);
