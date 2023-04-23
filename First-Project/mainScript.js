@@ -1,265 +1,362 @@
 // Add the Test data
 const test_data = [
-    //
     {
-        "name": "Organization",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Main Organization,tag1,manager,ct",
-        "isLoggedUser": "false",
-        "positionName": "organization",
-        "id": "O-6065",
+        "area": "Department: ",
+        "click_enable": "no",
+        "depth": 0,
+        "enable_mgr_view": "no",
+        "id": "main-00000",
+        "imageUrl": null,
+        "isLoggedUser": false,
+        "name": "Main Org Root",
+        "office": "prodmite",
         "parentId": "",
-        "size": ""
+        "positionName": "Department Root",
+        "profileUrl": null,
+        "score": -1,
+        "size": "",
+        "tags": "America/Los_Angeles",
+        "type": "root"
     },
     {
-        "name": "BackEnd Department",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "backend developer,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "backend developer",
-        "id": "O-6066",
-        "parentId": "O-6065",
-        "size": ""
+        "area": "Above 75",
+        "click_enable": "no",
+        "enable_mgr_view": "no",
+        "id": "Grp-Above-266049",
+        "imageUrl": null,
+        "isLoggedUser": false,
+        "name": "Above Average.",
+        "office": "prodmite",
+        "parentId": 266049,
+        "positionName": "Prodoscore above 75",
+        "profileUrl": null,
+        "score": -1,
+        "size": "",
+        "tags": "America/Los_Angeles",
+        "type": "average"
     },
     {
-        "name": "FrontEnd Department",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "frontend developer",
-        "id": "O-6067",
-        "parentId": "O-6065",
-        "size": ""
+        "area": "Prodoscore: 88",
+        "click_enable": "yes",
+        "enable_mgr_view": "no",
+        "id": 266050,
+        "imageUrl": "",
+        "isLoggedUser": false,
+        "name": "David Ricardo",
+        "office": "Domain: prodmite",
+        "parentId": "Grp-Above-266049",
+        "positionName": "Manager",
+        "profileUrl": "#employee/266050",
+        "score": 88,
+        "size": "",
+        "tags": "America/Los_Angeles, Visible User",
+        "type": "employee"
     },
     {
-        "name": "DevOps Department",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "devops developer",
-        "id": "O-6068",
-        "parentId": "O-6065",
-        "size": ""
+        "area": "Prodoscore: 92",
+        "click_enable": "yes",
+        "enable_mgr_view": "no",
+        "id": 266052,
+        "imageUrl": "",
+        "isLoggedUser": false,
+        "name": "Vijay Labaen",
+        "office": "Domain: prodmite",
+        "parentId": "Grp-Above-266049",
+        "positionName": "IT",
+        "profileUrl": "#employee/266052",
+        "score": 92,
+        "size": "",
+        "tags": "America/Los_Angeles, Visible User",
+        "type": "employee"
     },
     {
-        "name": "BA Department",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "ba developer",
-        "id": "O-6069",
-        "parentId": "O-6065",
-        "size": ""
+        "area": "Below 40",
+        "click_enable": "no",
+        "enable_mgr_view": "no",
+        "id": "Grp-Below-266049",
+        "imageUrl": null,
+        "isLoggedUser": false,
+        "name": "Below Average.",
+        "office": "prodmite",
+        "parentId": 266049,
+        "positionName": "Prodoscore below 40",
+        "profileUrl": null,
+        "score": -1,
+        "size": "",
+        "tags": "America/New_York",
+        "type": "average"
     },
     {
-        "name": "QA Department",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "qa developer",
-        "id": "O-6070",
-        "parentId": "O-6065",
-        "size": ""
+        "area": "Prodoscore: 24",
+        "click_enable": "yes",
+        "enable_mgr_view": "no",
+        "id": 266274,
+        "imageUrl": null,
+        "isLoggedUser": false,
+        "name": "John Martinez",
+        "office": "Domain: prodmite",
+        "parentId": "Grp-Below-266049",
+        "positionName": "IT",
+        "profileUrl": "#employee/266274",
+        "score": 24,
+        "size": "",
+        "tags": "America/New_York, Visible User",
+        "type": "employee"
     },
     {
-        "name": "UI/UX Department",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "ui/ux developer",
-        "id": "O-6071",
-        "parentId": "O-6065",
-        "size": ""
-    },
-    //
-    // Averages Groups
-    {
-        "name": "Above Average Department",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "above average developer",
-        "id": "O-6072",
-        "parentId": "O-6066",
-        "size": ""
+        "area": "Prodoscore: 87",
+        "click_enable": "yes",
+        "enable_mgr_view": "no",
+        "id": 266275,
+        "imageUrl": null,
+        "isLoggedUser": false,
+        "name": "Byron Blodgett",
+        "office": "Domain: prodmite",
+        "parentId": "Grp-Above-266049",
+        "positionName": "IT",
+        "profileUrl": "#employee/266275",
+        "score": 87,
+        "size": "",
+        "tags": "America/New_York, Visible User",
+        "type": "employee"
     },
     {
-        "name": "Middle Average Department",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "middle average developer",
-        "id": "O-6073",
-        "parentId": "O-6066",
-        "size": ""
+        "area": "Prodoscore: 86",
+        "click_enable": "yes",
+        "enable_mgr_view": "yes",
+        "id": 266049,
+        "imageUrl": " ",
+        "isLoggedUser": true,
+        "name": "Dason Test",
+        "office": "Domain: prodmite",
+        "parentId": "main-0001-13",
+        "positionName": "Administrator",
+        "profileUrl": "#employee/266049",
+        "score": 86,
+        "size": "",
+        "tags": "America/Los_Angeles, Visible User",
+        "type": "employee"
     },
     {
-        "name": "Below Average Department",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "below average developer",
-        "id": "O-6074",
-        "parentId": "O-6066",
-        "size": ""
-    },
-    //
-    // Employees Groups will be added here
-    {
-        "name": "Admin - Backedn Developer",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "admin backend developer",
-        "id": "O-6075",
-        "parentId": "O-6072",
-        "size": ""
+        "area": "Below 40",
+        "click_enable": "no",
+        "enable_mgr_view": "no",
+        "id": "Grp-Below-266051",
+        "imageUrl": null,
+        "isLoggedUser": false,
+        "name": "Below Average.",
+        "office": "prodmite",
+        "parentId": 266051,
+        "positionName": "Prodoscore below 40",
+        "profileUrl": null,
+        "score": -1,
+        "size": "",
+        "tags": "America/Los_Angeles",
+        "type": "average"
     },
     {
-        "name": "Python - Backedn Developer",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "python backend developer",
-        "id": "O-6076",
-        "parentId": "O-6072",
-        "size": ""
+        "area": "Prodoscore: 22",
+        "click_enable": "yes",
+        "enable_mgr_view": "no",
+        "id": 266054,
+        "imageUrl": "",
+        "isLoggedUser": false,
+        "name": "vijay",
+        "office": "Domain: prodmite",
+        "parentId": "Grp-Below-266051",
+        "positionName": "Administrator",
+        "profileUrl": "#employee/266054",
+        "score": 22,
+        "size": "",
+        "tags": "America/Los_Angeles, Visible User",
+        "type": "employee"
     },
     {
-        "name": "Manager - Backedn Developer",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "manager backend developer",
-        "id": "O-6077",
-        "parentId": "O-6072",
-        "size": ""
+        "area": "Prodoscore: 26",
+        "click_enable": "yes",
+        "enable_mgr_view": "no",
+        "id": 266069,
+        "imageUrl": "",
+        "isLoggedUser": false,
+        "name": "test user",
+        "office": "Domain: prodmite",
+        "parentId": "Grp-Below-266051",
+        "positionName": "IT",
+        "profileUrl": "#employee/266069",
+        "score": 26,
+        "size": "",
+        "tags": "UTC, Visible User",
+        "type": "employee"
     },
     {
-        "name": "GO - Backedn Developer",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "go backend developer",
-        "id": "O-6078",
-        "parentId": "O-6072",
-        "size": ""
+        "area": "Prodoscore: 25",
+        "click_enable": "yes",
+        "enable_mgr_view": "yes",
+        "id": 266051,
+        "imageUrl": "",
+        "isLoggedUser": false,
+        "name": "Ruksha De Silva",
+        "office": "Domain: prodmite",
+        "parentId": "main-0003-15",
+        "positionName": "Manager",
+        "profileUrl": "#employee/266051",
+        "score": 25,
+        "size": "",
+        "tags": "America/Los_Angeles, Visible User",
+        "type": "employee"
     },
     {
-        "name": "Ruby - Backedn Developer",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "ruby backend developer",
-        "id": "O-6079",
-        "parentId": "O-6072",
-        "size": ""
+        "area": "Below 40",
+        "click_enable": "no",
+        "enable_mgr_view": "no",
+        "id": "Grp-Below-266053",
+        "imageUrl": null,
+        "isLoggedUser": false,
+        "name": "Below Average.",
+        "office": "prodmite",
+        "parentId": 266053,
+        "positionName": "Prodoscore below 40",
+        "profileUrl": null,
+        "score": -1,
+        "size": "",
+        "tags": "UTC",
+        "type": "average"
     },
     {
-        "name": "Nodejs - Backedn Developer",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "nodjes backend developer",
-        "id": "O-6080",
-        "parentId": "O-6072",
-        "size": ""
-    },
-    //
-    // Averages Groups
-    {
-        "name": "Above Average Department",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "above average developer",
-        "id": "O-6081",
-        "parentId": "O-6076",
-        "size": ""
+        "area": "Prodoscore: 23",
+        "click_enable": "yes",
+        "enable_mgr_view": "no",
+        "id": 266070,
+        "imageUrl": "",
+        "isLoggedUser": false,
+        "name": "TestQA QA",
+        "office": "Domain: prodmite",
+        "parentId": "Grp-Below-266053",
+        "positionName": "Manager",
+        "profileUrl": "#employee/266070",
+        "score": 23,
+        "size": "",
+        "tags": "UTC, Visible User",
+        "type": "employee"
     },
     {
-        "name": "Middle Average Department",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "middle average developer",
-        "id": "O-6082",
-        "parentId": "O-6076",
-        "size": ""
+        "area": "Prodoscore: 25",
+        "click_enable": "yes",
+        "enable_mgr_view": "no",
+        "id": 266072,
+        "imageUrl": "",
+        "isLoggedUser": false,
+        "name": "App user ",
+        "office": "Domain: prodmite",
+        "parentId": "Grp-Below-266053",
+        "positionName": "Administrator",
+        "profileUrl": "#employee/266072",
+        "score": 25,
+        "size": "",
+        "tags": "America/Los_Angeles, Visible User",
+        "type": "employee"
     },
     {
-        "name": "Below Average Department",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "below average developer",
-        "id": "O-6083",
-        "parentId": "O-6076",
-        "size": ""
-    },
-    //
-    // Employees Groups will be added here
-    {
-        "name": "Intern - Backedn Developer",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "intern backend developer",
-        "id": "O-6084",
-        "parentId": "O-6083",
-        "size": ""
+        "area": "Prodoscore: 24",
+        "click_enable": "yes",
+        "enable_mgr_view": "no",
+        "id": 266123,
+        "imageUrl": "",
+        "isLoggedUser": false,
+        "name": "Manager (App user)",
+        "office": "Domain: prodmite",
+        "parentId": "Grp-Below-266053",
+        "positionName": "IT",
+        "profileUrl": "#employee/266123",
+        "score": 24,
+        "size": "",
+        "tags": "America/Los_Angeles, Visible User",
+        "type": "employee"
     },
     {
-        "name": "Intern - Backedn Developer",
-        "area": "Corporate",
-        "profileUrl": "http://example.com/employee/profile",
-        "office": "CTO office",
-        "tags": "Ceo,tag1,manager,cto",
-        "isLoggedUser": "false",
-        "positionName": "intern backend developer",
-        "id": "O-6085",
-        "parentId": "O-6083",
-        "size": ""
+        "area": "Prodoscore: 22",
+        "click_enable": "yes",
+        "enable_mgr_view": "yes",
+        "id": 266053,
+        "imageUrl": "",
+        "isLoggedUser": false,
+        "name": "Vindula Senanayake",
+        "office": "Domain: prodmite",
+        "parentId": "main-0003-15",
+        "positionName": "Administrator",
+        "profileUrl": "#employee/266053",
+        "score": 22,
+        "size": "",
+        "tags": "America/Los_Angeles, Visible User",
+        "type": "employee"
+    },
+    {
+        "area": "Below 40",
+        "click_enable": "no",
+        "enable_mgr_view": "no",
+        "id": "main-0001-13",
+        "imageUrl": null,
+        "isLoggedUser": false,
+        "name": "Above Average.",
+        "office": "prodmite",
+        "parentId": 13,
+        "positionName": "Total Average Prodoscore below 40",
+        "profileUrl": null,
+        "score": -1,
+        "size": "",
+        "tags": "America/Los_Angeles",
+        "type": "average"
+    },
+    {
+        "area": "Below 40",
+        "click_enable": "no",
+        "enable_mgr_view": "no",
+        "id": "main-0003-15",
+        "imageUrl": null,
+        "isLoggedUser": false,
+        "name": "Below Average.",
+        "office": "prodmite",
+        "parentId": 15,
+        "positionName": "Total Average Prodoscore below 40",
+        "profileUrl": null,
+        "score": -1,
+        "size": "",
+        "tags": "America/Los_Angeles",
+        "type": "average"
+    },
+    {
+        "area": "Organization Department.",
+        "click_enable": "no",
+        "enable_mgr_view": "no",
+        "id": 13,
+        "imageUrl": null,
+        "isLoggedUser": false,
+        "name": "Audit",
+        "office": "prodmite",
+        "parentId": "main-00000",
+        "positionName": "Oranization: prodmite",
+        "profileUrl": null,
+        "score": -1,
+        "size": "",
+        "tags": "America/Los_Angeles",
+        "type": "department"
+    },
+    {
+        "area": "Organization Department.",
+        "click_enable": "no",
+        "enable_mgr_view": "no",
+        "id": 15,
+        "imageUrl": null,
+        "isLoggedUser": false,
+        "name": "External Relations",
+        "office": "prodmite",
+        "parentId": "main-00000",
+        "positionName": "Oranization: prodmite",
+        "profileUrl": null,
+        "score": -1,
+        "size": "",
+        "tags": "America/Los_Angeles",
+        "type": "department"
     }
 ]
 //
@@ -267,8 +364,8 @@ const test_data = [
 var chart;
 var dataFlattened_;
 d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv').then((dataFlattened) => {
+    //
     dataFlattened = test_data;
-    // 
     dataFlattened.forEach((d) => {
         const val = Math.round(d.name.length / 2);
         d.progress = [...new Array(val)].map((d) => Math.random() * 25 + 5);
@@ -313,6 +410,22 @@ d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv'
     .nodeContent(function (d, i, arr, state) {
         //
         const imageSrc = 'http://127.0.0.1:5500/First-Project/dev.png'; // replace with your image source URL
+
+        // Here we can process the data as we need to show in below.
+
+        // Process the name
+        let nodeName = d.data.name;
+        
+        // process the position name
+        let positionName = d.data.office;
+
+        // process the prodoscore or small description
+        let scoreOrDescription = "Prodoscore: " + d.data.score;
+        if (d.data.type == "average" || d.data.type == "root")
+            scoreOrDescription = d.data.positionName;
+        else if (d.data.type == "department")
+            scoreOrDescription = d.data.area;
+
         return `
             <div style="width:300px; height:170px;" class="node-main-div">
                 <img src="${imageSrc}" class="node-profile-image" alt="Profile Image">
@@ -320,13 +433,13 @@ d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv'
                 <div class="node-main-userInfo">
 
                     <div class="node-user-name"> ${
-                        d.data.name
+                        nodeName || "No Content"
                     } </div>
                     <div class="node-user-positionName"> ${
-                        d.data.positionName || '---'
+                        positionName || "No Content"
                     } </div>
-                    <div class="node-user-prodoscore"> Prodoscore: ${
-                        d.data.id || '---'
+                    <div class="node-user-prodoscore"> ${
+                        scoreOrDescription || "No Content"
                     } </div>
                     ${
                         d.depth == 0
