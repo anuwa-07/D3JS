@@ -9,15 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/d3-flextree@2.1.2/build/d3-flextree.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
-
-    <!-- For Local Libs -->
-    <!-- <script src="../LibFiles/d3js-7.js"></script>
-    <script src="../LibFiles/d3-org-chart@2.6.0.js"></script>
-    <script src="../LibFiles/d3-flextree.js"></script>
-    <link rel="stylesheet" href="../LibFiles/fornt-awesome-all.min.css"> -->
-    <!--  -->
-
-
     <script src="./mainScript.js"></script>
     <link rel="stylesheet" href="style.css">   
     <script>
@@ -123,6 +114,17 @@
             <i class="fas fa-plus"></i> zoom in
         </button>
         <br />
+
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <!-- <input type="text" id="search-input" placeholder="Search for a node..."> -->
+            <input type="text" id="search-input" placeholder="Search for a node..." onkeyup="searchOnChange()">
+            <!-- <button onclick="search()">Search</button> -->
+            <button onclick="clearSearch()">Close</button>
+          </div>
+        <div id="search-results"></div>
+
     <!-- Button set end Here -->
     </div>
   </body>

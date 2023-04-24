@@ -192,7 +192,7 @@ const test_data = [
         "area": "Prodoscore: 25",
         "click_enable": "yes",
         "enable_mgr_view": "yes",
-        "id": 266051,
+        "id": "266051",
         "imageUrl": "",
         "isLoggedUser": false,
         "name": "Ruksha De Silva",
@@ -457,6 +457,143 @@ d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv'
     // Render the chart
     .render();
 });
+
+// For showing the Search results for the DOM
+/*
+function displaySearchResults(results) {
+    // Get a reference to the container element
+    const container = document.getElementById("search-results");
+    // 
+    // Clear any previous search results from the container
+    container.innerHTML = "";
+    //
+    // Loop through the search results and create HTML elements for each one
+    for (let i = 0; i < results.length; i++) {
+        const result = results[i];
+        const resultDiv = document.createElement("div");
+        const resultLink = document.createElement("a");
+        resultLink.textContent = result.name;
+        resultLink.href = result.profileUrl;
+        resultDiv.appendChild(resultLink);
+        container.appendChild(resultDiv);
+    }
+}
+*/
+
+/*
+function displaySearchResults(results) {
+    // Get a reference to the container element
+    const container = document.getElementById("search-results");
+    //
+    container.innerHTML = "";
+    //
+    // Loop through the search results and create HTML elements for each one
+    for (let i = 0; i < results.length; i++) {
+        const result = results[i];
+        const resultDiv = document.createElement("div");
+        resultDiv.classList.add("search-result");
+    
+        const resultLink = document.createElement("a");
+        resultLink.textContent = result.name;
+        resultLink.href = result.profileUrl;
+        resultDiv.appendChild(resultLink);
+    
+        const button = document.createElement("button");
+        button.textContent = "Locate";
+        button.classList.add("save-button");
+        button.addEventListener("click", () => {
+            // Locate the node in the chart
+            let nodeid = result.id;
+            chart.setHighlighted(nodeid).render();   
+        });
+        //
+        resultDiv.appendChild(button);
+        container.appendChild(resultDiv);
+    }
+}
+*/
+
+function displaySearchResults(results) {
+    // Get a reference to the container element
+    const container = document.getElementById("search-results");
+  
+    // Set max-height and overflow-y properties for container
+    container.style.maxHeight = "100px";
+    container.style.overflowY = "auto";
+  
+    // Clear any previous search results from the container
+    container.innerHTML = "";
+  
+    // Loop through the search results and create HTML elements for each one
+    for (let i = 0; i < results.length; i++) {
+        const result = results[i];
+        const resultDiv = document.createElement("div");
+        resultDiv.classList.add("search-result");
+    
+        const resultLink = document.createElement("a");
+        resultLink.textContent = result.name;
+        resultLink.href = result.profileUrl;
+        resultDiv.appendChild(resultLink);
+    
+        const button = document.createElement("button");
+        button.textContent = "Save";
+        button.classList.add("save-button");
+        button.addEventListener("click", () => {
+            //
+            let nodeid = result.id;
+            chart.setHighlighted(nodeid).render();   
+        });
+        resultDiv.appendChild(button);
+    
+        container.appendChild(resultDiv);
+    }
+}
+//
+// For the search functionality
+function search() {
+    var searchTerm = document.getElementById('search-input').value.toLowerCase();
+    var filteredData = dataFlattened_.filter(function(d) {
+      return d.name.toLowerCase().includes(searchTerm);
+    });
+    displaySearchResults(filteredData);
+    //chart.data(filteredData).render();
+}
+
+// Clear the search results
+function clearSearch() {
+    // Get a reference to the search results container element
+    const container = document.getElementById("search-results");
+    
+    // Remove all child elements from the container
+    while (container.firstChild) {
+      container.removeChild(container.firstChild);
+    }
+    // Reset the search input value
+    const searchInput = document.getElementById("search-input");
+    searchInput.value = "";
+}
+
+// For the search onchange functionality
+var searchTimeout;
+// For the search functionality
+function searchOnChange() {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(function() {
+    var searchTerm = document.getElementById('search-input').value.toLowerCase();
+    var filteredData = dataFlattened_.filter(function(d) {
+      return d.name.toLowerCase().includes(searchTerm);
+    });
+    displaySearchResults(filteredData);
+    //chart.data(filteredData).render();
+  }, 200);
+}
+
+  
+
+
+
+
+
 //
 // For downloading the chart as a pdf
 function downloadPdf() {
