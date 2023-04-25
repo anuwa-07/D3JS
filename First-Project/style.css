@@ -253,5 +253,79 @@ body {
   background-color: #3e8e41; /* Darker green on hover */
 }
 
+/* Styles of the POPUP */
+.hierarchy-chart.main-div {
+  width: 300px;
+  height: 400px;
+  border: 1px solid #ccc;
+  position: relative;
+  color: #9ada11;
+  background-color: #c2c2c24a;
+}
+
+.hierarchy-chart .top-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.hierarchy-chart .image {
+  display: block;
+  margin: 20px auto 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.hierarchy-chart .name {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.hierarchy-chart .job {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.hierarchy-chart .score {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.hierarchy-chart .domain {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.hierarchy-chart .bottom-section {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+}
+
+.hierarchy-chart .tags {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.hierarchy-chart .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.hierarchy-chart .close-btn:hover {
+  color: red;
+}
 
 

@@ -115,15 +115,30 @@
         </button>
         <br />
 
-
         <!-- Search Bar -->
         <div class="search-container">
-            <!-- <input type="text" id="search-input" placeholder="Search for a node..."> -->
             <input type="text" id="search-input" placeholder="Search for a node..." onkeyup="searchOnChange()">
-            <!-- <button onclick="search()">Search</button> -->
             <button onclick="clearSearch()">Close</button>
           </div>
         <div id="search-results"></div>
+        
+        <br>
+        <!-- For the POPUP  -->
+        <div class="hierarchy-chart popup main-div">
+            <div class="top-section">
+              <img src="http://127.0.0.1:5500/First-Project/dev.png" alt="Image" class="image">
+              <div class="name"></div>
+              <div class="job"></div>
+              <div class="score"></div>
+              <div class="domain"></div>
+              <button class="close-btn">X</button>
+            </div>
+            <!--  -->
+            <div class="bottom-section">
+                <div class="tags"></div>
+            </div>
+        </div>
+          
 
     <!-- Button set end Here -->
     </div>

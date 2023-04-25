@@ -408,6 +408,7 @@ d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv'
     }
     })
     .nodeContent(function (d, i, arr, state) {
+        console.log(d);
         //
         const imageSrc = 'http://127.0.0.1:5500/First-Project/dev.png'; // replace with your image source URL
 
@@ -425,9 +426,12 @@ d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv'
             scoreOrDescription = d.data.positionName;
         else if (d.data.type == "department")
             scoreOrDescription = d.data.area;
-
+        
+        // For the Popup
+        let tags = d.data.tags;
+        let imageUrl = d.data.imageUrl;
         return `
-            <div style="width:300px; height:170px;" class="node-main-div">
+            <div style="width:300px; height:170px;" class="node-main-div" onclick="nodeClicked('${imageUrl}', '${nodeName}', '${d.data.positionName}', '${scoreOrDescription}', '${d.data.office}', '${tags}', '${d.data.type}')">
                 <img src="${imageSrc}" class="node-profile-image" alt="Profile Image">
                 <div class="pie-chart-wrapper"></div>
                 <div class="node-main-userInfo">
@@ -457,62 +461,8 @@ d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv'
     // Render the chart
     .render();
 });
-
-// For showing the Search results for the DOM
-/*
-function displaySearchResults(results) {
-    // Get a reference to the container element
-    const container = document.getElementById("search-results");
-    // 
-    // Clear any previous search results from the container
-    container.innerHTML = "";
-    //
-    // Loop through the search results and create HTML elements for each one
-    for (let i = 0; i < results.length; i++) {
-        const result = results[i];
-        const resultDiv = document.createElement("div");
-        const resultLink = document.createElement("a");
-        resultLink.textContent = result.name;
-        resultLink.href = result.profileUrl;
-        resultDiv.appendChild(resultLink);
-        container.appendChild(resultDiv);
-    }
-}
-*/
-
-/*
-function displaySearchResults(results) {
-    // Get a reference to the container element
-    const container = document.getElementById("search-results");
-    //
-    container.innerHTML = "";
-    //
-    // Loop through the search results and create HTML elements for each one
-    for (let i = 0; i < results.length; i++) {
-        const result = results[i];
-        const resultDiv = document.createElement("div");
-        resultDiv.classList.add("search-result");
-    
-        const resultLink = document.createElement("a");
-        resultLink.textContent = result.name;
-        resultLink.href = result.profileUrl;
-        resultDiv.appendChild(resultLink);
-    
-        const button = document.createElement("button");
-        button.textContent = "Locate";
-        button.classList.add("save-button");
-        button.addEventListener("click", () => {
-            // Locate the node in the chart
-            let nodeid = result.id;
-            chart.setHighlighted(nodeid).render();   
-        });
-        //
-        resultDiv.appendChild(button);
-        container.appendChild(resultDiv);
-    }
-}
-*/
-
+//
+// Search functionality
 function displaySearchResults(results) {
     // Get a reference to the container element
     const container = document.getElementById("search-results");
@@ -549,16 +499,6 @@ function displaySearchResults(results) {
     }
 }
 //
-// For the search functionality
-function search() {
-    var searchTerm = document.getElementById('search-input').value.toLowerCase();
-    var filteredData = dataFlattened_.filter(function(d) {
-      return d.name.toLowerCase().includes(searchTerm);
-    });
-    displaySearchResults(filteredData);
-    //chart.data(filteredData).render();
-}
-
 // Clear the search results
 function clearSearch() {
     // Get a reference to the search results container element
@@ -575,7 +515,6 @@ function clearSearch() {
 
 // For the search onchange functionality
 var searchTimeout;
-// For the search functionality
 function searchOnChange() {
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(function() {
@@ -587,8 +526,31 @@ function searchOnChange() {
     //chart.data(filteredData).render();
   }, 200);
 }
-
+//
+// For the Node Clicked functionality
+function nodeClicked(imageUrl, name, positionName, score, domain, tags, type) {
+    if (type != "employee") 
+        return;
+    //
+    const hierarchyChart = document.querySelector('.hierarchy-chart.popup');
+    //
+    // Populate top section
+    // hierarchyChart.querySelector('.image').src = imageUrl;
+    hierarchyChart.querySelector('.name').textContent = name;
+    hierarchyChart.querySelector('.job').textContent = positionName;
+    hierarchyChart.querySelector('.score').textContent = score;
+    hierarchyChart.querySelector('.domain').textContent = domain;
   
+    // Populate tags
+    const tagsContainer = hierarchyChart.querySelector('.tags');
+    tagsContainer.innerHTML = ''; // clear existing tags
+    tags = tags.split(", ");
+    tags.forEach(tag => {
+        const tagElement = document.createElement('div');
+        tagElement.textContent = tag;
+        tagsContainer.appendChild(tagElement);
+    });
+}
 
 
 
