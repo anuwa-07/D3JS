@@ -460,8 +460,27 @@ d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv'
     })
     // Render the chart
     .render();
+
+
+    const hierarchyChartPopup = document.querySelector('.hierarchy-chart.popup');
+    const popupCloseButton = document.querySelector('.hierarchy-chart .popup-close-btn');
+    //
+    // Define function to close the popup when clicked outside of it
+    /* TODO: For now we donot need this functionality
+    window.onclick = function(event) {
+        if (event.target != hierarchyChartPopup && event.target.className != "pie-chart-wrapper") {
+            hierarchyChartPopup.style.display = "none";
+        }
+    }
+    */
+    // Define function to close the popup when clicked close button
+    popupCloseButton.addEventListener('click', function() {
+        hierarchyChartPopup.style.display = "none";
+    });
+
 });
-//
+// 
+// ========================================= Search Option process Func will Go here! =======================================================
 // Search functionality
 function displaySearchResults(results) {
     // Get a reference to the container element
@@ -526,33 +545,52 @@ function searchOnChange() {
     //chart.data(filteredData).render();
   }, 200);
 }
-//
+
+// ======================================== Search END here =======================================================
+
+
+
+
+// ======================================== Node Click POPUP functionlaty =======================================================
 // For the Node Clicked functionality
 function nodeClicked(imageUrl, name, positionName, score, domain, tags, type) {
     if (type != "employee") 
         return;
     //
-    const hierarchyChart = document.querySelector('.hierarchy-chart.popup');
+    let nodePopUp = document.querySelector('.hierarchy-chart.popup');
     //
     // Populate top section
     // hierarchyChart.querySelector('.image').src = imageUrl;
-    hierarchyChart.querySelector('.name').textContent = name;
-    hierarchyChart.querySelector('.job').textContent = positionName;
-    hierarchyChart.querySelector('.score').textContent = score;
-    hierarchyChart.querySelector('.domain').textContent = domain;
-  
+    nodePopUp.style.display = "block";
+    nodePopUp.querySelector('.name').textContent = name;
+    nodePopUp.querySelector('.job').textContent = positionName;
+    nodePopUp.querySelector('.score').textContent = score;
+    nodePopUp.querySelector('.domain').textContent = domain;
+    //
     // Populate tags
-    const tagsContainer = hierarchyChart.querySelector('.tags');
+    let tagsContainer = nodePopUp.querySelector('.tags');
     tagsContainer.innerHTML = ''; // clear existing tags
     tags = tags.split(", ");
     tags.forEach(tag => {
         const tagElement = document.createElement('div');
-        tagElement.textContent = tag;
+        tagElement.classList.add('tag');
+        
+        const iconElement = document.createElement('i');
+        iconElement.classList.add('fas', 'fa-tag');
+        
+        const tagTextElement = document.createElement('span');
+        tagTextElement.classList.add('tag-text');
+        tagTextElement.textContent = tag;
+        
+        tagElement.appendChild(iconElement);
+        tagElement.appendChild(tagTextElement);
+        
         tagsContainer.appendChild(tagElement);
     });
 }
 
 
+// ======================================= POPUP Will End Here =========================================================
 
 
 

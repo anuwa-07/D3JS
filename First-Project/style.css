@@ -1,5 +1,5 @@
 body {
-    background-color: #060e12
+    background-color: #f8fefe
 }
 
 .btn {
@@ -254,13 +254,15 @@ body {
 }
 
 /* Styles of the POPUP */
-.hierarchy-chart.main-div {
+.hierarchy-chart.popup.main-div {
   width: 300px;
-  height: 400px;
+  height: 360px;
   border: 1px solid #ccc;
   position: relative;
-  color: #9ada11;
-  background-color: #c2c2c24a;
+  color: #705bd8;
+  background-color: #98abec4a;
+  /* display: none; */
+  border-radius: 10PX;
 }
 
 .hierarchy-chart .top-section {
@@ -305,15 +307,25 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 10px;
+  padding: 5px;
+  background-color: #b2c9f7;
+  text-align: end;
 }
 
-.hierarchy-chart .tags {
-  font-size: 14px;
-  margin-top: 10px;
+.hierarchy-chart .tags .tag {
+  display: inline-block;
+  background-color: #5b3b3b;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-right: 10px;
 }
 
-.hierarchy-chart .close-btn {
+.hierarchy-chart .tags .tag-text {
+  font-weight: bold;
+}
+
+.hierarchy-chart .popup-close-btn {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -324,8 +336,34 @@ body {
   cursor: pointer;
 }
 
-.hierarchy-chart .close-btn:hover {
+.hierarchy-chart .popup-close-btn:hover {
   color: red;
+}
+
+
+
+/* POPUP TAG STYLES */
+.hierarchy-chart.popup .tags {
+  display: flex;
+  justify-content: center;
+}
+
+.hierarchy-chart.popup .tag {
+  display: inline-block;
+  background-color: #3e8af4;
+  border: 1px solid #6002f7;
+  border-radius: 6px;
+  font-size: 11px;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hierarchy-chart.popup .tag i {
+  margin-right: 5px;
+}
+
+.hierarchy-chart.popup .tag-text {
+  font-weight: bold;
 }
 
 
