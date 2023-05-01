@@ -94,8 +94,9 @@ body {
 /* New CSS */
 
 .node-foreign-object-div {
-  background-color: #022f45;
-  border-radius: 2px solid #021228;
+  background-color: #ffffff;
+  /* border: 1px gray solid; */
+  border-radius: 12px;
   color: #000b0e;
 }
 
@@ -104,12 +105,12 @@ body {
 }
 
 .main-dev-node {
-    font-family: 'Inter', sans-serif;
-    position: relative;
-    margin-top: -1px;
-    margin-left: -1px;
-    border-radius: 0px;
-    border: 2px solid #2CAAE5;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  margin-top: -1px;
+  margin-left: -1px;
+  border-radius: 0px;
+  border: 2px solid #2CAAE5;
 }
 
 .node-profile-image {
@@ -121,6 +122,7 @@ body {
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
+  margin-bottom: 20px;
 }
 
 .pie-chart-wrapper {
@@ -136,11 +138,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .node-main-userInfo {
   color: #2d3234;
   position: absolute;
+  text-align: center;
   /* right: 50%;
   top: 50%;
   transform: translateY(-50%); */
@@ -150,23 +155,45 @@ body {
   font-size: 15px;
   font-weight: bold;
   letter-spacing: 1px;
-  color: #fcfcfc;
+  color: #000;
+  /* margin-top: 32px; */
+}
+
+.node-main-userInfo .node-user-name.employee,
+.node-main-userInfo .node-user-name.root {
   margin-top: 32px;
 }
 
 .node-main-userInfo .node-user-positionName {
   font-size: 12px;
-  color: white;
+  color: rgb(228, 18, 18);
   font-weight: 300;
   letter-spacing: 1.5px;
 }
 
 .node-main-userInfo .node-user-prodoscore {
   font-size: 12px;
-  color: rgb(254, 254, 254);
+  color: rgb(238, 15, 15);
   font-weight: 200;
   letter-spacing: 1px;
 }
+
+/* Add own style for diff node types */
+.node-main-div.employee {
+  color: #ee1010;
+  border-top: 7px goldenrod solid;
+}
+
+.node-main-div.department {
+  border-top: 7px rgb(163 163 165 / 93%) solid;
+}
+.node-main-div.average {
+  border: 2px rgba(246, 44, 44, 0.57) solid;
+}
+/* .node-main-div.root {
+  border-top: 7px rgba(66, 66, 66, 0.93) solid;
+} */
+
 
 
 
@@ -258,7 +285,7 @@ body {
   color: #705bd8;
   background-color: #e6e6e6a1;
   border-radius: 10px;
-  /* display: none; */
+  display: none;
 }
 
 .hierarchy-chart-popup .top-section {

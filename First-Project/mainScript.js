@@ -300,7 +300,7 @@ const test_data = [
         "name": "Above Average.",
         "office": "prodmite",
         "parentId": 13,
-        "positionName": "Total Average Prodoscore below 40",
+        "positionName": "Prodoscore below 40",
         "profileUrl": null,
         "score": -1,
         "size": "",
@@ -317,7 +317,7 @@ const test_data = [
         "name": "Below Average.",
         "office": "prodmite",
         "parentId": 15,
-        "positionName": "Total Average Prodoscore below 40",
+        "positionName": "Prodoscore below 40",
         "profileUrl": null,
         "score": -1,
         "size": "",
@@ -363,6 +363,11 @@ const test_data = [
 //
 var chart;
 var dataFlattened_;
+const aboveAvgColor = '#7c7cfa;';
+const belowAvgColor = '#ff0000';
+const withinAvgColor = '#808080';
+
+
 d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv').then((dataFlattened) => {
     //
     dataFlattened = test_data;
@@ -377,30 +382,41 @@ d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv'
     .container('.chart-container')
     .svgHeight(window.innerHeight - 10)
     .data(dataFlattened)
-    .nodeHeight((d) => 160)
+    .nodeHeight((d) => {
+        if (d.data.type == "employee" || d.data.type == "root") return 140;
+        return 110;
+    })
     .nodeWidth((d) => {
-    if (d.depth == 0) return 500;
-    return 280;
+        return 240;
     })
     .childrenMargin((d) => 90)
     .compactMarginBetween((d) => 65)
     .compactMarginPair((d) => 100)
     .neightbourMargin((a, b) => 50)
     .siblingsMargin((d) => 100)
-    .buttonContent(({ node, state }) => {
-    return `<div style="color:#2CAAE5;border-radius:5px;padding:3px;font-size:10px;margin:auto auto;background-color:#8cf100;border: 1px solid #2CAAE5"> <span style="font-size:9px">${
-        node.children
-        ? `<i class="fas fa-angle-up"></i>`
-        : `<i class="fas fa-angle-down"></i>`
-    }</span> ${node.data._directSubordinates} </div>`;
+    .buttonContent(({ node, state, d }) => {
+        let background_color = '#000;' // black 
+        if (node.data.type == "average"){
+            background_color = belowAvgColor // red
+            if (node.data.name.includes("Above"))
+                // set background color to blue
+                background_color = aboveAvgColor // blue
+            if (node.data.name.includes("Within"))
+                background_color = withinAvgColor // grey
+        }
+        return `<div class="top-below-arrowbuttons" style="color:#eef0f1;border-radius:5px;padding:4px;font-size:16px;margin:auto auto;background-color:${background_color}"> <span style="font-size:16px">${
+            node.children
+            ? `<i class="fas fa-angle-up"></i>`
+            : `<i class="fas fa-angle-down"></i>`
+        }</span> ${node.data._directSubordinates} </div>`;
     })
     .linkUpdate(function (d, i, arr) {
     d3.select(this)
         .attr('stroke', (d) =>
-            d.data._upToTheRootHighlighted ? 'white' : 'white'
+            d.data._upToTheRootHighlighted ? 'black' : 'black'
         )
         .attr('stroke-width', (d) =>
-            d.data._upToTheRootHighlighted ? 15 : 1
+            d.data._upToTheRootHighlighted ? 10 : 1
         );
     //
     if (d.data._upToTheRootHighlighted) {
@@ -410,7 +426,11 @@ d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv'
     .nodeContent(function (d, i, arr, state) {
         console.log(d);
         //
-        const imageSrc = 'http://127.0.0.1:5500/First-Project/dev.png'; // replace with your image source URL
+        let imageName = "dev.png";
+        if (d.data.type == "root")
+            imageName = "root.png";
+        //
+        let imageSrc = 'http://127.0.0.1:5500/First-Project/'+imageName; // replace with your image source URL
 
         // Here we can process the data as we need to show in below.
 
@@ -430,13 +450,30 @@ d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv'
         // For the Popup
         let tags = d.data.tags;
         let imageUrl = d.data.imageUrl;
+        let subStyles = 'width:240px; height:100%;';
+        //
+        // Set the border color for the average nodes
+        if (d.data.type == "average"){
+            let borderColor = belowAvgColor;
+            if (d.data.name.includes("Above"))
+                borderColor = aboveAvgColor;
+            if (d.data.name.includes("Within"))
+                borderColor = withinAvgColor;
+            // set border color
+            subStyles += 'border: 2px solid' + borderColor + ';';
+        }
         return `
-            <div style="width:300px; height:170px;" class="node-main-div" onclick="nodeClicked('${imageUrl}', '${nodeName}', '${d.data.positionName}', '${scoreOrDescription}', '${d.data.office}', '${tags}', '${d.data.type}')">
-                <img src="${imageSrc}" class="node-profile-image" alt="Profile Image">
+            <div style="${subStyles}" class="node-main-div ${d.data.type}" onclick="nodeClicked('${imageUrl}', '${nodeName}', '${d.data.positionName}', '${scoreOrDescription}', '${d.data.office}', '${tags}', '${d.data.type}')">
+                ${
+                    // add image if only d.data.type == employee
+                    d.data.type == "employee" || d.data.type == "root"
+                        ? `<img src="${imageSrc}" class="node-profile-image" alt="Profile Image">`
+                        : ''
+                }
                 <div class="pie-chart-wrapper"></div>
                 <div class="node-main-userInfo">
 
-                    <div class="node-user-name"> ${
+                    <div class="node-user-name ${d.data.type}"> ${
                         nodeName || "No Content"
                     } </div>
                     <div class="node-user-positionName"> ${
@@ -445,15 +482,6 @@ d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv'
                     <div class="node-user-prodoscore"> ${
                         scoreOrDescription || "No Content"
                     } </div>
-                    ${
-                        d.depth == 0
-                            ? `                              
-                        <br/>
-                        <div style="max-width:200px;font-size:10px;">
-                        Hello World! Prodoscore Org Hiraerchy Chart. 
-                        </div>`
-                            : ''
-                    }
                 </div>
             </div>
         `;
