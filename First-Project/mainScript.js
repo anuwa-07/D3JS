@@ -462,8 +462,8 @@ d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv'
     .render();
 
 
-    const hierarchyChartPopup = document.querySelector('.hierarchy-chart.popup');
-    const popupCloseButton = document.querySelector('.hierarchy-chart .popup-close-btn');
+    const hierarchyChartPopup = document.querySelector('.hierarchy-chart-popup');
+    const popupCloseButton = document.querySelector('.hierarchy-chart-popup .popup-close-btn');
     //
     // Define function to close the popup when clicked outside of it
     /* TODO: For now we donot need this functionality
@@ -487,8 +487,8 @@ function displaySearchResults(results) {
     const container = document.getElementById("search-results");
   
     // Set max-height and overflow-y properties for container
-    container.style.maxHeight = "100px";
-    container.style.overflowY = "auto";
+    // container.style.maxHeight = "100px";
+    // container.style.overflowY = "auto";
   
     // Clear any previous search results from the container
     container.innerHTML = "";
@@ -499,14 +499,22 @@ function displaySearchResults(results) {
         const resultDiv = document.createElement("div");
         resultDiv.classList.add("search-result");
     
+        const resultLinkWarpper = document.createElement("div");
         const resultLink = document.createElement("a");
+        //
+        resultLinkWarpper.classList.add("search-result-link-wrapper");
         resultLink.textContent = result.name;
         resultLink.href = result.profileUrl;
-        resultDiv.appendChild(resultLink);
+        resultLinkWarpper.appendChild(resultLink);
+        resultDiv.appendChild(resultLinkWarpper);
     
         const button = document.createElement("button");
-        button.textContent = "Save";
-        button.classList.add("save-button");
+        const buttonIcon = document.createElement("i");
+        buttonIcon.classList.add("fas");
+        buttonIcon.classList.add("fa-route");
+        //
+        button.classList.add("search-content-locatebtn");
+        button.appendChild(buttonIcon);
         button.addEventListener("click", () => {
             //
             let nodeid = result.id;
@@ -538,6 +546,12 @@ function searchOnChange() {
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(function() {
     var searchTerm = document.getElementById('search-input').value.toLowerCase();
+    //
+    if (searchTerm.length === 0) {
+      clearSearch();
+      return;
+    }
+    //
     var filteredData = dataFlattened_.filter(function(d) {
       return d.name.toLowerCase().includes(searchTerm);
     });
@@ -557,7 +571,7 @@ function nodeClicked(imageUrl, name, positionName, score, domain, tags, type) {
     if (type != "employee") 
         return;
     //
-    let nodePopUp = document.querySelector('.hierarchy-chart.popup');
+    let nodePopUp = document.querySelector('.hierarchy-chart-popup');
     //
     // Populate top section
     // hierarchyChart.querySelector('.image').src = imageUrl;

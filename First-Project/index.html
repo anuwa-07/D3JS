@@ -19,128 +19,83 @@
     <!--  -->
     <div class="chart-container" style="height: 1200px"></div>
     <div class="action-buttons">
-    <!-- Button set start Here -->
-        <button onclick='chart.setExpanded("O-6164").render()' class="btn btn-action-button waves-effect waves-light">
-            <i class="fas fa-chevron-down"></i> Expand
-        </button><br />
-
-        <button onclick='chart.setExpanded("O-6164",false).render()' class="btn btn-action-button waves-effect waves-light">
-            <i class="fas fa-chevron-up"></i> Collapse
-        </button><br />
         
-        <button onclick="chart.fit()" class="btn btn-action-button waves-effect waves-light">
-            <i class="fas fa-sync"></i> fit
-        </button>
-        <br />
-
-        <button onclick='chart.layout(["right","bottom","left","top"][index++%4]).render().fit()' class="btn btn-action-button waves-effect waves-light">
-            <i class="fas fa-retweet"></i> swap
-        </button>
-        <br />
-
-        <button onclick="chart.compact(!!(compact++%2)).render().fit()" class="btn btn-action-button waves-effect waves-light">
-            <i class="fas fa-sitemap"></i> compact
-        </button>
-        <br />
-
-        <button  onclick="chart.setActiveNodeCentered(!!(actNdCent++%2)).render()" class="btn btn-action-button waves-effect waves-light">
-            <i class="fas fa-border-none"></i> center Active
-        </button>
-        <br />
-
-        <button onclick='chart.setCentered("266051").render()' class="btn btn-action-button waves-effect waves-light">
-            <i class="fas fa-compress-arrows-alt"></i> center
-        </button>
-        <br />
-
-        <button onclick='chart.setHighlighted("266051").render()' class="btn btn-action-button waves-effect waves-light">
-            <i class="fas fa-highlighter"></i> mark</button
-        ><br />
-
-        <button onclick='chart.setUpToTheRootHighlighted("266051").render().fit()' class="btn btn-action-button waves-effect waves-light">
-            <i class="fas fa-route"></i> mark root
-        </button>
-        <br />
-
-        <button onclick="chart.clearHighlighting()" class="btn btn-action-button waves-effect waves-light">
-            <i class="fas fa-eraser"></i> clear mark
-        </button>
-        <br />
-
-        <button onclick="chart.fullscreen('body')" class="btn btn-action-button waves-effect waves-light">
-            <i class="fas fa-expand"></i> fullscreen</button>
-        <br />
-        
-        <!-- For Now these content will not use -->
-        <!-- <button onclick="chart.exportImg()" class="btn btn-action-button waves-effect waves-light">
-            <i class="far fa-images"></i> export img
-        </button>
-        <br />
-
-        <button onclick="chart.exportImg({full:true})" class="btn btn-action-button waves-effect waves-light">
-            <i class="far fa-images"></i> export full img
-        </button>
-        <br /> -->
-
-        <!-- For now these contents will not use -->
-        <!-- <button onclick="chart.exportSvg()" class="btn btn-action-button waves-effect waves-light">
-            <i class="fas fa-file-download"></i> export svg
-        </button>
-        <br /> -->
-        
-        <!-- For now these contents will not use -->
-        <!-- <button onclick="chart.expandAll()" class="btn btn-action-button waves-effect waves-light">
-            <i class="fas fa-angle-double-down"></i> expand all
-        </button>
-        <br /> -->
-
-        <button onclick="chart.collapseAll()" class="btn btn-action-button waves-effect waves-light" >
-            <i class="fas fa-angle-double-up"></i> collapse all
-        </button>
-        <br />
-
-        <!-- For now these contents will not use -->
-        <button onclick="searchEmployee()" class="btn btn-action-button waves-effect waves-light">
-            <i class="far fa-file-pdf"></i> Search Employee
-        </button>
-        <br />
-
-        <button onclick="chart.zoomOut()" class="btn btn-action-button waves-effect waves-light">
-            <i class="fas fa-minus"></i> zoom out
-        </button>
-        <br />
-
-        <button onclick="chart.zoomIn()" class="btn btn-action-button waves-effect waves-light">
-            <i class="fas fa-plus"></i> zoom in
-        </button>
-        <br />
-
         <!-- Search Bar -->
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Search for a node..." onkeyup="searchOnChange()">
-            <button onclick="clearSearch()">Close</button>
-          </div>
-        <div id="search-results"></div>
-        
-        <br>
-        <!-- For the POPUP  -->
-        <div class="hierarchy-chart popup main-div">
-            <div class="top-section">
-              <img src="http://127.0.0.1:5500/First-Project/dev.png" alt="Image" class="image">
-              <div class="name"></div>
-              <div class="job"></div>
-              <div class="score"></div>
-              <div class="domain"></div>
-              <button class="popup-close-btn">X</button>
+        <div class="search-actbutton-warpper">
+            <div class="search-container-main">
+                <div class="search-container-sub">
+                    <input type="text" id="search-input" placeholder="Search..." onkeyup="searchOnChange()">
+                </div>
+                <div id="search-results"></div>            
             </div>
-            <!--  -->
-            <div class="bottom-section">
-                <div class="tags"></div>
-            </div>
-        </div>
-          
 
+            <!-- Button set start Here -->
+            <div class="action-button-warrper-main">
+                <div class="action-button-warrper-sub">
+                    <button onclick='chart.setUpToTheRootHighlighted("266051").render().fit()' class="btn btn-action-button actbtn-01 waves-effect waves-light" title="Show myself">
+                        <i class="fas fa-route"></i> Show myself
+                    </button>
+                    
+
+                    <button onclick="chart.zoomOut()" class="btn btn-action-button actbtn-02 waves-effect waves-light" title="=Zoom Out">
+                        <i class="fas fa-minus"></i>
+                    </button>
+        
+
+                    <button onclick="chart.zoomIn()" class="btn btn-action-button actbtn-03 waves-effect waves-light" title="Zoom In">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    
+
+                    <button onclick="chart.fullscreen('body')" class="btn btn-action-button actbtn-04 waves-effect waves-light" title="Fullscreen">
+                        <i class="fas fa-expand"></i> Fullscreen
+                    </button>
+                    
+
+                    <button onclick="chart.fit()" class="btn btn-action-button actbtn-05 waves-effect waves-light" title="Fit">
+                        <i class="fas fa-sync"></i> Fit
+                    </button>
+                
+
+                    <button onclick='chart.setCentered("266051").render()' class="btn btn-action-button actbtn-06 waves-effect waves-light" title="Center">
+                        <i class="fas fa-compress-arrows-alt"></i> Center
+                    </button>
+        
+
+                    <button onclick="chart.expandAll()" class="btn btn-action-button actbtn-07 waves-effect waves-light" title="Expand All">
+                        <i class="fas fa-angle-double-down"></i> Expand All
+                    </button>
+        
+
+                    <button onclick="chart.collapseAll()" class="btn btn-action-button actbtn-08 waves-effect waves-light" title="Collapse All">
+                        <i class="fas fa-angle-double-up"></i> Collapse All
+                    </button>
+                </div>     
+            </div>            
+        </div> <br>
+
+        <!-- For the POPUP  -->
+        <div class="hierarchy-chart-popup-warpper">
+            <div class="hierarchy-chart-popup main-div">
+                <div class="top-section">
+                <img src="http://127.0.0.1:5500/First-Project/dev.png" alt="Image" class="image">
+                <div class="name"></div>
+                <div class="job"></div>
+                <div class="score"></div>
+                <div class="domain"></div>
+                <button class="popup-close-btn">X</button>
+                </div>
+                <!--  -->
+                <div class="bottom-section">
+                    <div class="tags"></div>
+                </div>
+            </div>        <!-- For the POPUP  -->
+        </div>
+
+        <!-- For the POPUP  -->
     <!-- Button set end Here -->
     </div>
+
+
   </body>
 </html>

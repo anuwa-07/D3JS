@@ -3,27 +3,13 @@ body {
 }
 
 .btn {
-    margin: 3px;
+    margin-bottom: 6px;
     color: inherit;
-    text-transform: uppercase;
     word-wrap: break-word;
     white-space: normal;
     cursor: pointer;
     border: 0;
     border-radius: 0.125rem;
-    -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%),
-      0 2px 10px 0 rgb(0 0 0 / 12%);
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
-    -webkit-transition: color 0.15s ease-in-out,
-      background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-      -webkit-box-shadow 0.15s ease-in-out;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-      border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
-      -webkit-box-shadow 0.15s ease-in-out;
     padding: 0.84rem 2.14rem;
     font-size: 0.81rem;
     display: inline-block;
@@ -31,41 +17,78 @@ body {
     color: #212529;
     text-align: center;
     vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     border: 1px solid transparent;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5;
-    border-radius: 0.25rem;
-  }
+    border-radius: 0.15rem;
+    height: 40px;
+    font-size: 12px;    
+    border: 1px solid #86a0f6 !important;
+    color: #4c74f7;
+}
 
-  .btn-action-button {
-    text-transform: lowercase;
-    font-size: 11px !important;
-    border-radius: 7px !important;
-    color: white !important;
-    padding: 4px 5px !important;
-    background-color: #1d2643 !important;
-  }
+.actbtn-01 {
+  width: 100%;
+  background-color: #5897f0;
+  color: white;
+}
 
-  .action-buttons {
-    position: absolute;
-    top: 70px;
-    right: 35px;
-  }
+.actbtn-02,
+.actbtn-03,
+.actbtn-04 {
+  width: calc(100% / 3 - 19px);
+  background-color: white;
+}
 
-  .svg-chart-container:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, #04192b 0, #000b0e 100%);
-  }
+.actbtn-04 {
+  width: calc((100% / 3) * 2 - 55px);
+  background-color: white;
+}
+
+.actbtn-05,
+.actbtn-06 {
+  width: 49%;
+  background-color: white;
+
+}
+
+.actbtn-07,
+.actbtn-08 {
+  width: 100%;
+  background-color: white;
+}
+
+.action-buttons {
+  position: absolute;
+  top: 70px;
+  right: 35px;
+}
+
+.search-actbutton-warpper{
+  background-color: #ededed86;
+  border-radius: 10px;
+}
+
+.action-button-warrper-main {
+  padding: 8px;
+  width: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.svg-chart-container:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, #04192b 0, #000b0e 100%);
+}
 
 
 /* New CSS */
@@ -147,84 +170,48 @@ body {
 
 
 
-/* FROM:  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"/> Front Styles!! */
-/* cyrillic-ext */
-/* SEEMS THESE CSS WILL NOT NEED FOR THE TREE VIEW
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZJhiJ-Ek-_EeAmM.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZthiJ-Ek-_EeAmM.woff2) format('woff2');
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZNhiJ-Ek-_EeAmM.woff2) format('woff2');
-  unicode-range: U+1F00-1FFF;
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZxhiJ-Ek-_EeAmM.woff2) format('woff2');
-  unicode-range: U+0370-03FF;
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZBhiJ-Ek-_EeAmM.woff2) format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZFhiJ-Ek-_EeAmM.woff2) format('woff2');
-  unicode-range: U+0100-02AF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-*/
-
-
-/* New css for the Search Option */
-#search-results {
-  margin-top: 10px;
-}
-
-#search-results div {
+/* ======================================================= New css for the Search Option  ======================================================= */
+.search-container-main {
+  border-radius: 5px;
   padding: 10px;
-  border: 1px solid #ccc;
+}
+
+.search-container-sub {
+  display: flex;
+  align-items: center;
+}
+
+.search-container-main #search-input {
+  padding: 8px;
+  border: none;
+  border-radius: 3px;
+  margin-right: 5px;
+  font-size: 14px;
+  width: 100%;
+  height: 40px;
+}
+
+.search-container-main #search-input:focus {
+  outline: none;
+  box-shadow: 0 0 5px #0099ff;
+}
+
+.search-container-main #search-results {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+#search-results {
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 10px;
+}
+
+#search-results div.search-result {
+  padding: 10px;
   background-color: #f9f9f9;
+  border-bottom: #96d4fd 1px solid;
+  display: flex;
 }
 
 #search-results a {
@@ -236,96 +223,109 @@ body {
   text-decoration: underline;
 }
 
-.save-button {
-  background-color: #4CAF50; /* Green */
+.search-content-locatebtn {
+  background-color: #6e9eff;
   border: none;
-  color: white;
-  padding: 8px 16px;
+  color: #ffffff;
+  padding: 6px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  border-radius: 4px;
+  font-size: 12px;
+  border-radius: 3px;
   cursor: pointer;
 }
 
-.save-button:hover {
-  background-color: #3e8e41; /* Darker green on hover */
+.search-content-locatebtn:hover {
+  background-color: #5b92ff; /* Darker green on hover */
+  cursor: pointer;
 }
 
-/* Styles of the POPUP */
-.hierarchy-chart.popup.main-div {
-  width: 300px;
-  height: 360px;
+.search-result-link-wrapper {
+  width: 80%;
+}
+
+
+
+/* ======================================================= Styles of the POPUP =======================================================  */
+.hierarchy-chart-popup-warpper {
+  border-radius: 10px;
+}
+.hierarchy-chart-popup.main-div {
+  height: 340px;
   border: 1px solid #ccc;
   position: relative;
   color: #705bd8;
-  background-color: #98abec4a;
+  background-color: #e6e6e6a1;
+  border-radius: 10px;
   /* display: none; */
-  border-radius: 10PX;
 }
 
-.hierarchy-chart .top-section {
+.hierarchy-chart-popup .top-section {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   text-align: center;
+  font-family: system-ui;
+  color: #3a3a3a;
+  font-size: 12px;
 }
 
-.hierarchy-chart .image {
+.hierarchy-chart-popup .image {
   display: block;
   margin: 20px auto 0;
   width: 100px;
   height: 100px;
   border-radius: 50%;
+  border: 9px solid #ffffff;
 }
 
-.hierarchy-chart .name {
-  font-size: 24px;
-  font-weight: bold;
+.hierarchy-chart-popup .name {
+  font-size: 20px;
+  font-weight: 400;
   margin: 10px 0;
+  color: black;
+  font-family: sans-serif;
 }
 
-.hierarchy-chart .job {
-  font-size: 18px;
+.hierarchy-chart-popup .job {
+  font-size: 17;
+  margin: 5px 0;
+  letter-spacing: 2px;
+  color: rgb(44, 44, 44);
+}
+
+.hierarchy-chart-popup .score {
   margin: 5px 0;
 }
 
-.hierarchy-chart .score {
-  font-size: 14px;
+.hierarchy-chart-popup .domain {
   margin: 5px 0;
 }
 
-.hierarchy-chart .domain {
-  font-size: 14px;
-  margin: 5px 0;
-}
-
-.hierarchy-chart .bottom-section {
+.hierarchy-chart-popup .bottom-section {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   padding: 5px;
-  background-color: #b2c9f7;
   text-align: end;
 }
 
-.hierarchy-chart .tags .tag {
+.hierarchy-chart-popup .tags .tag {
   display: inline-block;
-  background-color: #5b3b3b;
-  border: 1px solid #ccc;
+  background-color: rgb(76 152 252);
   border-radius: 4px;
-  padding: 4px 8px;
-  margin-right: 10px;
+  padding: 4px;
+  margin-right: 5px;
 }
 
-.hierarchy-chart .tags .tag-text {
+.hierarchy-chart-popup .tags .tag-text {
   font-weight: bold;
 }
 
-.hierarchy-chart .popup-close-btn {
+.hierarchy-chart-popup .popup-close-btn {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -336,33 +336,32 @@ body {
   cursor: pointer;
 }
 
-.hierarchy-chart .popup-close-btn:hover {
+.hierarchy-chart-popup .popup-close-btn:hover {
   color: red;
 }
 
 
 
 /* POPUP TAG STYLES */
-.hierarchy-chart.popup .tags {
+.hierarchy-chart-popup .tags {
   display: flex;
   justify-content: center;
 }
 
-.hierarchy-chart.popup .tag {
+.hierarchy-chart-popup .tag {
   display: inline-block;
-  background-color: #3e8af4;
-  border: 1px solid #6002f7;
+  background-color: #9b9b9b;
   border-radius: 6px;
   font-size: 11px;
   color: #fff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.hierarchy-chart.popup .tag i {
+.hierarchy-chart-popup .tag i {
   margin-right: 5px;
 }
 
-.hierarchy-chart.popup .tag-text {
+.hierarchy-chart-popup .tag-text {
   font-weight: bold;
 }
 
