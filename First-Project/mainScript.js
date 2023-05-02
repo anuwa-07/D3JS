@@ -13,9 +13,10 @@ const test_data = [
         "parentId": "",
         "positionName": "Department Root",
         "profileUrl": null,
-        "score": -1,
+        "score": 62.0,
         "size": "",
         "tags": "America/Los_Angeles",
+        "total_employees": 70,
         "type": "root"
     },
     {
@@ -39,7 +40,7 @@ const test_data = [
         "area": "Prodoscore: 88",
         "click_enable": "yes",
         "enable_mgr_view": "no",
-        "id": 266050,
+        "id": "266050",
         "imageUrl": "",
         "isLoggedUser": false,
         "name": "David Ricardo",
@@ -56,7 +57,7 @@ const test_data = [
         "area": "Prodoscore: 92",
         "click_enable": "yes",
         "enable_mgr_view": "no",
-        "id": 266052,
+        "id": "266052",
         "imageUrl": "",
         "isLoggedUser": false,
         "name": "Vijay Labaen",
@@ -90,7 +91,7 @@ const test_data = [
         "area": "Prodoscore: 24",
         "click_enable": "yes",
         "enable_mgr_view": "no",
-        "id": 266274,
+        "id": "266274",
         "imageUrl": null,
         "isLoggedUser": false,
         "name": "John Martinez",
@@ -107,7 +108,7 @@ const test_data = [
         "area": "Prodoscore: 87",
         "click_enable": "yes",
         "enable_mgr_view": "no",
-        "id": 266275,
+        "id": "266275",
         "imageUrl": null,
         "isLoggedUser": false,
         "name": "Byron Blodgett",
@@ -124,7 +125,7 @@ const test_data = [
         "area": "Prodoscore: 86",
         "click_enable": "yes",
         "enable_mgr_view": "yes",
-        "id": 266049,
+        "id": "266049",
         "imageUrl": " ",
         "isLoggedUser": true,
         "name": "Dason Test",
@@ -158,7 +159,7 @@ const test_data = [
         "area": "Prodoscore: 22",
         "click_enable": "yes",
         "enable_mgr_view": "no",
-        "id": 266054,
+        "id": "266054",
         "imageUrl": "",
         "isLoggedUser": false,
         "name": "vijay",
@@ -175,7 +176,7 @@ const test_data = [
         "area": "Prodoscore: 26",
         "click_enable": "yes",
         "enable_mgr_view": "no",
-        "id": 266069,
+        "id": "266069",
         "imageUrl": "",
         "isLoggedUser": false,
         "name": "test user",
@@ -226,7 +227,7 @@ const test_data = [
         "area": "Prodoscore: 23",
         "click_enable": "yes",
         "enable_mgr_view": "no",
-        "id": 266070,
+        "id": "266070",
         "imageUrl": "",
         "isLoggedUser": false,
         "name": "TestQA QA",
@@ -243,7 +244,7 @@ const test_data = [
         "area": "Prodoscore: 25",
         "click_enable": "yes",
         "enable_mgr_view": "no",
-        "id": 266072,
+        "id": "266072",
         "imageUrl": "",
         "isLoggedUser": false,
         "name": "App user ",
@@ -260,7 +261,7 @@ const test_data = [
         "area": "Prodoscore: 24",
         "click_enable": "yes",
         "enable_mgr_view": "no",
-        "id": 266123,
+        "id": "266123",
         "imageUrl": "",
         "isLoggedUser": false,
         "name": "Manager (App user)",
@@ -277,7 +278,7 @@ const test_data = [
         "area": "Prodoscore: 22",
         "click_enable": "yes",
         "enable_mgr_view": "yes",
-        "id": 266053,
+        "id": "266053",
         "imageUrl": "",
         "isLoggedUser": false,
         "name": "Vindula Senanayake",
@@ -328,7 +329,7 @@ const test_data = [
         "area": "Organization Department.",
         "click_enable": "no",
         "enable_mgr_view": "no",
-        "id": 13,
+        "id": "13",
         "imageUrl": null,
         "isLoggedUser": false,
         "name": "Audit",
@@ -336,16 +337,17 @@ const test_data = [
         "parentId": "main-00000",
         "positionName": "Oranization: prodmite",
         "profileUrl": null,
-        "score": -1,
+        "score": 86,
         "size": "",
         "tags": "America/Los_Angeles",
+        "total_employees": 1,
         "type": "department"
     },
     {
         "area": "Organization Department.",
         "click_enable": "no",
         "enable_mgr_view": "no",
-        "id": 15,
+        "id": "15",
         "imageUrl": null,
         "isLoggedUser": false,
         "name": "External Relations",
@@ -353,9 +355,10 @@ const test_data = [
         "parentId": "main-00000",
         "positionName": "Oranization: prodmite",
         "profileUrl": null,
-        "score": -1,
+        "score": 24,
         "size": "",
         "tags": "America/Los_Angeles",
+        "total_employees": 63,
         "type": "department"
     }
 ]
@@ -413,10 +416,10 @@ d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv'
     .linkUpdate(function (d, i, arr) {
     d3.select(this)
         .attr('stroke', (d) =>
-            d.data._upToTheRootHighlighted ? 'black' : 'black'
+            d.data._upToTheRootHighlighted ? 'blue' : 'black'
         )
         .attr('stroke-width', (d) =>
-            d.data._upToTheRootHighlighted ? 10 : 1
+            d.data._upToTheRootHighlighted ? 5 : 1
         );
     //
     if (d.data._upToTheRootHighlighted) {
@@ -436,17 +439,23 @@ d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv'
 
         // Process the name
         let nodeName = d.data.name;
-        
+        if (d.data.type == "root")
+            nodeName = d.data.office;
+       
         // process the position name
         let positionName = d.data.office;
-
+        if (d.data.type == "department")
+            positionName = 'Department Score: ' + d.data.score;
+        //
         // process the prodoscore or small description
         let scoreOrDescription = "Prodoscore: " + d.data.score;
-        if (d.data.type == "average" || d.data.type == "root")
+        if (d.data.type == "average")
             scoreOrDescription = d.data.positionName;
+        if (d.data.type == "root")
+            scoreOrDescription = 'Prodoscore: ' + d.data.score;
         else if (d.data.type == "department")
-            scoreOrDescription = d.data.area;
-        
+            scoreOrDescription = 'Total Employees: ' + d.data.total_employees;
+        //
         // For the Popup
         let tags = d.data.tags;
         let imageUrl = d.data.imageUrl;
@@ -462,8 +471,15 @@ d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv'
             // set border color
             subStyles += 'border: 2px solid' + borderColor + ';';
         }
+        // Add New styles for the highlighted nodes
+        let nodeStyles = '';
+        if (d.data._upToTheRootHighlighted) {
+            nodeStyles = 'border: 5px solid blue;'; // Change the border color to your desired color
+        }
+
+
         return `
-            <div style="${subStyles}" class="node-main-div ${d.data.type}" onclick="nodeClicked('${imageUrl}', '${nodeName}', '${d.data.positionName}', '${scoreOrDescription}', '${d.data.office}', '${tags}', '${d.data.type}')">
+            <div style="${subStyles}${nodeStyles}" class="node-main-div ${d.data.type}" onclick="nodeClicked('${imageUrl}', '${nodeName}', '${d.data.positionName}', '${scoreOrDescription}', '${d.data.office}', '${tags}', '${d.data.type}')">
                 ${
                     // add image if only d.data.type == employee
                     d.data.type == "employee" || d.data.type == "root"
@@ -476,9 +492,11 @@ d3.csv('https://raw.githubusercontent.com/bumbeishvili/sample-data/main/org.csv'
                     <div class="node-user-name ${d.data.type}"> ${
                         nodeName || "No Content"
                     } </div>
-                    <div class="node-user-positionName"> ${
-                        positionName || "No Content"
-                    } </div>
+
+                    ${
+                        d.data.type != "root" ? `<div class="node-user-positionName"> ${positionName || "No Content"} </div>` : ''
+
+                    }
                     <div class="node-user-prodoscore"> ${
                         scoreOrDescription || "No Content"
                     } </div>
@@ -546,7 +564,9 @@ function displaySearchResults(results) {
         button.addEventListener("click", () => {
             //
             let nodeid = result.id;
-            chart.setHighlighted(nodeid).render();   
+            // chart.setHighlighted(nodeid).render();
+            chart.clearHighlighting();
+            chart.setUpToTheRootHighlighted(nodeid).render().fit()   
         });
         resultDiv.appendChild(button);
     
